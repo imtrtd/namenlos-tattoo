@@ -1,0 +1,17 @@
+node_modules
+.vercel
+.output
+dist
+.tanstack
+.nitro
+*.log
+.env
+.env.*
+!.env.example
+screenshots
+attachments
+artifacts
+.grok
+AGENTS.md
+AGENTS.project.md
+.DS_Store
