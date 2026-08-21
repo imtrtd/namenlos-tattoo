@@ -54,7 +54,7 @@ function Designs() {
                     <img
                       src={item.img}
                       alt={item.title}
-                      className="aspect-square w-full object-cover"
+                      className="media-image aspect-square w-full object-cover"
                     />
                     <span className="absolute left-2 top-2 bg-ink/85 px-2 py-1 text-[0.6rem] uppercase tracking-[0.12em] text-yellow">
                       {t(`status.${item.status}`)}
@@ -91,7 +91,7 @@ function Designs() {
           <div className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-3">
             {WORKS.map((w) => (
               <article key={w.id} className="border border-yellow/25 bg-ink/75">
-                <img src={w.img} alt={w.title} className="aspect-3/4 w-full object-cover" />
+                <img src={w.img} alt={w.title} className="media-image aspect-3/4 w-full object-cover" />
                 <div className="p-3">
                   <p className="text-[0.65rem] uppercase tracking-[0.14em] text-yellow">
                     {w.style} · {w.year}

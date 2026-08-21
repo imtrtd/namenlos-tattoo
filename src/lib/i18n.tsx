@@ -51,7 +51,7 @@ const dict: Record<Lang, Dict> = {
     "hero.lead":
       "Custom. Fine line. Lettering. Raw graphic. No compromise — from statement pieces to lines that still hit.",
     "hero.book": "Book a session",
-    "hero.event": "Blackout Yard · 22–23 Aug",
+    "hero.event": "Indie Open Air · 22 Aug",
     "status.open": "Appointments: open",
     "about.h": "About",
     "about.p1":
@@ -63,12 +63,12 @@ const dict: Record<Lang, Dict> = {
     "badge.since": "Since 2021",
     "badge.from": "From 70€",
     "event.kicker": "Upcoming · Open Air",
-    "event.h": "Blackout Yard",
-    "event.sub": "Open Air Guest",
-    "event.when": "22–23 Aug 2026",
-    "event.where": "Nuremberg · DE",
+    "event.h": "Indie Open Air",
+    "event.sub": "Stereo · Kulturgarten",
+    "event.when": "22 Aug 2026 · from 16:00",
+    "event.where": "Kulturgarten · Nuremberg",
     "event.lead":
-      "Walk-in flash and short custom slots. Limited capacity — book before you show up. Guest artists: send a portfolio.",
+      "Join NAMENLOS at Stereo’s Indie Open Air — 22 August in the Kulturgarten, Nuremberg.",
     "event.more": "Event details",
     "event.book": "Hold a slot",
     "works.h": "Portfolio",
@@ -163,7 +163,7 @@ const dict: Record<Lang, Dict> = {
     "book.step2": "Work",
     "book.step3": "When",
     "event.page.lead":
-      "Open-air guest day with NAMENLOS: walk-in ready designs and short appointments. Limited slots.",
+      "Stereo presents Indie Open Air: a summer gathering in the Kulturgarten, Nuremberg, on 22 August from 16:00.",
     "event.expect": "What to expect",
     "event.e1": "On-site tattoo setup (yard / open air)",
     "event.e2": "Ready designs + short custom slots",
@@ -194,7 +194,7 @@ const dict: Record<Lang, Dict> = {
     "hero.lead":
       "Custom. Fine line. Lettering. Rohe Grafik. Kein Kompromiss — von Statement-Stücken bis zu Linien, die sitzen.",
     "hero.book": "Termin anfragen",
-    "hero.event": "Blackout Yard · 22.–23. Aug",
+    "hero.event": "Indie Open Air · 22. Aug",
     "status.open": "Termine: offen",
     "about.h": "Über mich",
     "about.p1":
@@ -206,12 +206,12 @@ const dict: Record<Lang, Dict> = {
     "badge.since": "Seit 2021",
     "badge.from": "Ab 70€",
     "event.kicker": "Demnächst · Open Air",
-    "event.h": "Blackout Yard",
-    "event.sub": "Open Air Guest",
-    "event.when": "22.–23. Aug 2026",
-    "event.where": "Nürnberg · DE",
+    "event.h": "Indie Open Air",
+    "event.sub": "Stereo · Kulturgarten",
+    "event.when": "22. Aug 2026 · ab 16:00",
+    "event.where": "Kulturgarten · Nürnberg",
     "event.lead":
-      "Walk-in Flash und kurze Custom-Slots. Begrenzt — vorher buchen. Gastkünstler: Portfolio schicken.",
+      "Triff NAMENLOS beim Indie Open Air von Stereo — am 22. August im Kulturgarten Nürnberg.",
     "event.more": "Event-Details",
     "event.book": "Slot halten",
     "works.h": "Portfolio",
@@ -305,7 +305,7 @@ const dict: Record<Lang, Dict> = {
     "book.step2": "Arbeit",
     "book.step3": "Wann",
     "event.page.lead":
-      "Open-Air Guest Day mit NAMENLOS: Walk-in Flash und kurze Termine. Begrenzte Plätze.",
+      "Stereo präsentiert Indie Open Air: ein Sommertreffen im Kulturgarten Nürnberg am 22. August ab 16:00 Uhr.",
     "event.expect": "Was dich erwartet",
     "event.e1": "Tattoo-Setup vor Ort (Yard / Open Air)",
     "event.e2": "Fertige Designs + kurze Custom-Slots",
@@ -336,7 +336,7 @@ const dict: Record<Lang, Dict> = {
     "hero.lead":
       "Custom. Fine line. Lettering. Сырая графика. Без компромиссов — от statement-работ до точных линий.",
     "hero.book": "Записаться",
-    "hero.event": "Blackout Yard · 22–23 авг",
+    "hero.event": "Indie Open Air · 22 авг",
     "status.open": "Запись: открыта",
     "about.h": "Обо мне",
     "about.p1":
@@ -348,12 +348,12 @@ const dict: Record<Lang, Dict> = {
     "badge.since": "С 2021",
     "badge.from": "От 70€",
     "event.kicker": "Скоро · Open Air",
-    "event.h": "Blackout Yard",
-    "event.sub": "Open Air Guest",
-    "event.when": "22–23 авг 2026",
-    "event.where": "Нюрнберг · DE",
+    "event.h": "Indie Open Air",
+    "event.sub": "Stereo · Kulturgarten",
+    "event.when": "22 августа 2026 · с 16:00",
+    "event.where": "Kulturgarten · Нюрнберг",
     "event.lead":
-      "Walk-in flash и короткие custom-слоты. Мест мало — бронируй заранее. Гостевые мастера: портфолио.",
+      "Встречайте NAMENLOS на Indie Open Air от Stereo — 22 августа в Kulturgarten, Нюрнберг.",
     "event.more": "Подробнее",
     "event.book": "Занять слот",
     "works.h": "Портфолио",
@@ -447,7 +447,7 @@ const dict: Record<Lang, Dict> = {
     "book.step2": "Работа",
     "book.step3": "Когда",
     "event.page.lead":
-      "Open-air guest day с NAMENLOS: walk-in эскизы и короткие сеансы. Мест мало.",
+      "Stereo представляет Indie Open Air: летняя встреча в Kulturgarten, Нюрнберг, 22 августа с 16:00.",
     "event.expect": "Что будет",
     "event.e1": "Выездной сетап (yard / open air)",
     "event.e2": "Готовые эскизы + короткие custom-слоты",
@@ -478,7 +478,7 @@ const dict: Record<Lang, Dict> = {
     "hero.lead":
       "Custom. Fine line. Lettering. Сира графіка. Без компромісів — від statement-робіт до точних ліній.",
     "hero.book": "Записатися",
-    "hero.event": "Blackout Yard · 22–23 серп",
+    "hero.event": "Indie Open Air · 22 серп",
     "status.open": "Запис: відкритий",
     "about.h": "Про мене",
     "about.p1":
@@ -490,12 +490,12 @@ const dict: Record<Lang, Dict> = {
     "badge.since": "З 2021",
     "badge.from": "Від 70€",
     "event.kicker": "Скоро · Open Air",
-    "event.h": "Blackout Yard",
-    "event.sub": "Open Air Guest",
-    "event.when": "22–23 серп 2026",
-    "event.where": "Нюрнберг · DE",
+    "event.h": "Indie Open Air",
+    "event.sub": "Stereo · Kulturgarten",
+    "event.when": "22 серпня 2026 · з 16:00",
+    "event.where": "Kulturgarten · Нюрнберг",
     "event.lead":
-      "Walk-in flash і короткі custom-слоти. Місць мало — бронюй заздалегідь.",
+      "Зустрічайте NAMENLOS на Indie Open Air від Stereo — 22 серпня в Kulturgarten, Нюрнберг.",
     "event.more": "Детальніше",
     "event.book": "Зайняти слот",
     "works.h": "Портфоліо",
@@ -589,7 +589,7 @@ const dict: Record<Lang, Dict> = {
     "book.step2": "Робота",
     "book.step3": "Коли",
     "event.page.lead":
-      "Open-air guest day з NAMENLOS: walk-in ескізи і короткі сеанси. Місць мало.",
+      "Stereo представляє Indie Open Air: літня зустріч у Kulturgarten, Нюрнберг, 22 серпня з 16:00.",
     "event.expect": "Що буде",
     "event.e1": "Виїзний сетап (yard / open air)",
     "event.e2": "Готові ескізи + короткі custom-слоти",
