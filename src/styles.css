@@ -19,6 +19,116 @@
   --radius: 0px;
 }
 
+@layer components {
+  /* ---- Unified surfaces ------------------------------------------------ */
+  /* Standard content card (portfolio, flash, grids). */
+  .card {
+    border: 1px solid color-mix(in srgb, var(--color-yellow) 25%, transparent);
+    background-color: color-mix(in srgb, var(--color-ink) 78%, transparent);
+  }
+  /* Emphasised panel (feature boxes, forms, legal, event). */
+  .panel {
+    border: 2px solid color-mix(in srgb, var(--color-yellow) 40%, transparent);
+    background-color: color-mix(in srgb, var(--color-ink) 85%, transparent);
+  }
+  /* Quiet strip used for badges / secondary bands. */
+  .band {
+    border-top: 1px solid color-mix(in srgb, var(--color-yellow) 25%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--color-yellow) 25%, transparent);
+    background-color: color-mix(in srgb, var(--color-panel) 80%, transparent);
+  }
+
+  /* ---- Eyebrow / kicker ------------------------------------------------ */
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--color-yellow);
+  }
+
+  /* ---- Buttons --------------------------------------------------------- */
+  .btn {
+    display: inline-flex;
+    height: 3rem;
+    align-items: center;
+    justify-content: center;
+    padding-inline: 1.25rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    text-decoration: none;
+    transition:
+      background-color 0.15s ease,
+      color 0.15s ease,
+      border-color 0.15s ease;
+  }
+  .btn-sm {
+    height: 2.25rem;
+    padding-inline: 0.75rem;
+    font-size: 0.68rem;
+  }
+  .btn-block {
+    width: 100%;
+  }
+  .btn-primary {
+    background-color: var(--color-yellow);
+    color: var(--color-ink);
+  }
+  .btn-primary:hover {
+    background-color: var(--color-yellow-hot);
+  }
+  .btn-outline {
+    border: 2px solid var(--color-yellow);
+    color: var(--color-yellow);
+  }
+  .btn-outline:hover {
+    background-color: var(--color-yellow);
+    color: var(--color-ink);
+  }
+  .btn-ghost {
+    border: 2px solid color-mix(in srgb, var(--color-fg) 45%, transparent);
+    color: var(--color-fg);
+  }
+  .btn-ghost:hover {
+    background-color: var(--color-fg);
+    color: var(--color-ink);
+  }
+  .btn:disabled {
+    opacity: 0.6;
+  }
+
+  /* ---- Form fields ----------------------------------------------------- */
+  .field-label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-yellow);
+  }
+  .field-input {
+    height: 2.75rem;
+    width: 100%;
+    border: 1px solid color-mix(in srgb, var(--color-yellow) 35%, transparent);
+    background-color: var(--color-panel);
+    padding-inline: 0.75rem;
+    color: var(--color-fg);
+    outline: none;
+    transition: border-color 0.15s ease;
+  }
+  textarea.field-input {
+    height: auto;
+    padding-block: 0.5rem;
+  }
+  .field-input:focus {
+    border-color: var(--color-yellow);
+  }
+}
+
 @layer base {
   html {
     background-color: #050505;
@@ -61,6 +171,46 @@
     #f5c518 0 10px,
     #0a0a0a 10px 20px
   );
+}
+
+.media-image,
+.portrait-image {
+  filter: grayscale(1) contrast(1.18) brightness(0.9) sepia(0.28) hue-rotate(195deg) saturate(1.55);
+  transition: filter 180ms ease, transform 180ms ease;
+}
+
+.group:hover .media-image {
+  filter: grayscale(0.35) contrast(1.2) brightness(0.95) sepia(0.32) hue-rotate(195deg) saturate(1.65);
+  transform: scale(1.015);
+}
+
+.portrait-image {
+  aspect-ratio: 4 / 5;
+  object-position: center top;
+  box-shadow: 12px 12px 0 color-mix(in srgb, #7c00ff 68%, transparent);
+}
+
+.event-feature,
+.event-poster {
+  position: relative;
+  isolation: isolate;
+  background-image:
+    linear-gradient(115deg, rgba(5, 5, 5, 0.94) 18%, rgba(5, 5, 5, 0.44) 100%),
+    linear-gradient(35deg, rgba(111, 0, 255, 0.34), rgba(191, 255, 0, 0.28)),
+    url("/images/gallery/team.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.event-feature::after,
+.event-poster::after {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  background: linear-gradient(90deg, rgba(111, 0, 255, 0.22), transparent 55%, rgba(191, 255, 0, 0.26));
+  mix-blend-mode: screen;
+  pointer-events: none;
 }
 
 .wall-veil {

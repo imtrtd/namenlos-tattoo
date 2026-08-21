@@ -44,17 +44,16 @@ export function SiteHeader() {
 
         <Link
           to="/"
-          className="group flex flex-col items-center px-3 py-1 no-underline"
-          title="NAMENLOS · VIKTORIIA"
+          className="group flex flex-col items-start px-3 py-1 no-underline"
+          title="NAMENLOS TATTOO VIKTORIIA"
         >
           <span className="font-display text-[1.35rem] font-semibold leading-none tracking-[0.18em] text-fg group-hover:text-yellow sm:text-[1.55rem]">
-            NAMENLOS{" "}
-            <span className="text-[0.55em] tracking-[0.22em] text-yellow">
-              tattoo
-            </span>
+            NAMENLOS
           </span>
-          <span className="mt-1 h-px w-16 bg-yellow/80" />
-          <span className="mt-1 font-display text-[0.62rem] font-medium tracking-[0.42em] text-yellow">
+          <span className="mt-0.5 font-display text-[0.62rem] font-medium leading-none tracking-[0.42em] text-yellow">
+            TATTOO
+          </span>
+          <span className="mt-1 font-display text-[0.78rem] font-medium leading-none tracking-[0.3em] text-yellow">
             VIKTORIIA
           </span>
         </Link>
