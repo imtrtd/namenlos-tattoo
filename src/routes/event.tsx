@@ -16,7 +16,7 @@ function EventPage() {
         >
           ← {t("nav.site")}
         </Link>
-        <article className="event-poster mt-6 overflow-hidden border-2 border-yellow/40 bg-ink/85 p-6 sm:p-10">
+        <article className="event-poster panel mt-6 overflow-hidden p-6 sm:p-10">
           <span className="inline-block bg-yellow px-2 py-1 text-[0.65rem] font-bold uppercase tracking-[0.16em] text-ink">
             {t("event.kicker")}
           </span>
@@ -34,7 +34,7 @@ function EventPage() {
               href={SITE.tg}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-11 items-center border-2 border-yellow px-4 text-xs font-bold uppercase tracking-[0.14em] text-yellow no-underline"
+              className="btn btn-outline btn-sm"
             >
               Telegram
             </a>

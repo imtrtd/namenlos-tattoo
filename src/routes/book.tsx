@@ -121,25 +121,25 @@ function Book() {
         <h1 className="font-display text-5xl uppercase">{t("book.h")}</h1>
         <p className="mt-2 text-sm text-muted">{t("book.lead")}</p>
         {flash ? (
-          <p className="mt-3 border border-yellow/40 bg-ink/70 px-3 py-2 text-sm text-yellow">
+          <p className="card mt-3 px-3 py-2 text-sm text-yellow">
             {flash.title} · {flash.price}
           </p>
         ) : null}
 
         {done && tgHref ? (
-          <div className="mt-8 border-2 border-yellow bg-ink/80 p-6">
+          <div className="panel mt-8 p-6">
             <h2 className="font-display text-2xl uppercase text-yellow">{t("book.ok")}</h2>
             <a
               href={tgHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-5 inline-flex h-12 w-full items-center justify-center bg-yellow text-xs font-bold uppercase tracking-[0.16em] text-ink no-underline"
+              className="btn btn-primary btn-block mt-5"
             >
               {t("book.tg")}
             </a>
             <Link
               to="/"
-              className="mt-3 inline-flex h-11 w-full items-center justify-center border border-yellow text-xs font-bold uppercase tracking-[0.14em] text-yellow no-underline"
+              className="btn btn-outline btn-sm btn-block mt-3"
             >
               {t("nav.site")}
             </Link>
@@ -232,35 +232,35 @@ function Book() {
             {step === 3 ? (
               <div className="space-y-4">
                 <label className="block">
-                  <span className="mb-1 block text-[0.65rem] font-bold uppercase tracking-[0.14em] text-yellow">
+                  <span className="field-label">
                     {t("book.date")}
                   </span>
                   <input
                     type="date"
                     value={form.date}
                     onChange={(e) => set("date", e.target.value)}
-                    className="h-11 w-full border border-yellow/35 bg-panel px-3 text-fg outline-none focus:border-yellow"
+                    className="field-input"
                   />
                 </label>
                 <label className="block">
-                  <span className="mb-1 block text-[0.65rem] font-bold uppercase tracking-[0.14em] text-yellow">
+                  <span className="field-label">
                     {t("book.time")}
                   </span>
                   <input
                     type="time"
                     value={form.time}
                     onChange={(e) => set("time", e.target.value)}
-                    className="h-11 w-full border border-yellow/35 bg-panel px-3 text-fg outline-none focus:border-yellow"
+                    className="field-input"
                   />
                 </label>
                 <label className="block">
-                  <span className="mb-1 block text-[0.65rem] font-bold uppercase tracking-[0.14em] text-yellow">
+                  <span className="field-label">
                     {t("book.budget")}
                   </span>
                   <select
                     value={form.budget}
                     onChange={(e) => set("budget", e.target.value)}
-                    className="h-11 w-full border border-yellow/35 bg-panel px-3 text-fg outline-none"
+                    className="field-input"
                   >
                     <option value="">—</option>
                     <option>70–150€</option>
@@ -316,7 +316,7 @@ function Book() {
                 <button
                   type="button"
                   onClick={() => setStep(step - 1)}
-                  className="h-12 flex-1 border-2 border-yellow/50 text-xs font-bold uppercase tracking-[0.14em] text-yellow"
+                  className="btn btn-outline flex-1"
                 >
                   {t("book.back")}
                 </button>
@@ -324,7 +324,7 @@ function Book() {
               <button
                 type="submit"
                 disabled={sending}
-                className="h-12 flex-1 bg-yellow text-xs font-bold uppercase tracking-[0.14em] text-ink hover:bg-yellow-hot disabled:opacity-60"
+                className="btn btn-primary flex-1"
               >
                 {step < 3 ? t("book.next") : sending ? "…" : t("book.send")}
               </button>
@@ -349,14 +349,14 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-[0.65rem] font-bold uppercase tracking-[0.14em] text-yellow">
+      <span className="field-label">
         {label}
       </span>
       <input
         required={required}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="h-11 w-full border border-yellow/35 bg-panel px-3 text-fg outline-none focus:border-yellow"
+        className="field-input"
       />
     </label>
   );
@@ -373,14 +373,14 @@ function Area({
 }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-[0.65rem] font-bold uppercase tracking-[0.14em] text-yellow">
+      <span className="field-label">
         {label}
       </span>
       <textarea
         rows={5}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full border border-yellow/35 bg-panel px-3 py-2 text-fg outline-none focus:border-yellow"
+        className="field-input"
       />
     </label>
   );
