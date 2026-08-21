@@ -16,9 +16,7 @@ function Home() {
       <main>
         <section className="relative mx-auto grid max-w-6xl items-center gap-8 px-5 py-10 sm:py-16 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.22em] text-yellow">
-              {t("hero.kicker")}
-            </p>
+            <p className="eyebrow">{t("hero.kicker")}</p>
             <h1 className="mt-3 font-display text-5xl uppercase leading-[0.9] tracking-wide text-fg sm:text-7xl lg:text-8xl">
               {t("hero.title1")}
               <br />
@@ -28,16 +26,10 @@ function Home() {
               {t("hero.lead")}
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
-              <Link
-                to="/book"
-                className="inline-flex h-12 items-center bg-yellow px-5 text-xs font-bold uppercase tracking-[0.16em] text-ink no-underline hover:bg-yellow-hot"
-              >
+              <Link to="/book" className="btn btn-primary">
                 {t("hero.book")}
               </Link>
-              <Link
-                to="/event"
-                className="inline-flex h-12 items-center border-2 border-yellow px-5 text-xs font-bold uppercase tracking-[0.16em] text-yellow no-underline hover:bg-yellow hover:text-ink"
-              >
+              <Link to="/event" className="btn btn-outline">
                 {t("hero.event")}
               </Link>
             </div>
@@ -58,7 +50,7 @@ function Home() {
           </div>
         </section>
 
-        <section className="border-y border-yellow/25 bg-panel/80">
+        <section className="band">
           <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-4">
             {[t("badge.loc"), t("badge.since"), t("badge.from")].map((b) => (
               <span
@@ -79,7 +71,7 @@ function Home() {
           </div>
           <Link
             to="/event"
-            className="flex flex-col justify-between border-2 border-yellow bg-ink/70 p-6 no-underline"
+            className="panel flex flex-col justify-between p-6 no-underline"
           >
             <div>
               <span className="inline-block bg-yellow px-2 py-1 text-[0.65rem] font-bold uppercase tracking-[0.16em] text-ink">
@@ -115,7 +107,7 @@ function Home() {
           </div>
           <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
             {previewWorks.map((w) => (
-              <article key={w.id} className="group border border-yellow/25 bg-ink/70">
+              <article key={w.id} className="card group">
                 <img
                   src={w.img}
                   alt={w.title}
@@ -139,22 +131,16 @@ function Home() {
               ["styles.s1t", "styles.s1d"],
               ["styles.s2t", "styles.s2d"],
               ["styles.s3t", "styles.s3d"],
-            ].map(([ht, hd], i) => (
-              <article
-                key={ht}
-                className="border border-yellow/30 bg-ink/70 p-5"
-              >
-                <span className="text-xs text-yellow">0{i + 1}</span>
-                <h3 className="mt-2 font-display text-2xl uppercase">{t(ht)}</h3>
+            ].map(([ht, hd]) => (
+              <article key={ht} className="card p-5">
+                <span className="mb-2 block h-px w-8 bg-yellow/70" aria-hidden />
+                <h3 className="font-display text-2xl uppercase">{t(ht)}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted">{t(hd)}</p>
               </article>
             ))}
           </div>
           <p className="mt-5 text-sm text-muted">{t("styles.note")}</p>
-          <Link
-            to="/lettering"
-            className="mt-4 inline-flex h-11 items-center border-2 border-yellow px-4 text-xs font-bold uppercase tracking-[0.14em] text-yellow no-underline hover:bg-yellow hover:text-ink"
-          >
+          <Link to="/lettering" className="btn btn-outline mt-4">
             {t("styles.lab")}
           </Link>
         </section>
@@ -183,8 +169,10 @@ function Home() {
           <h2 className="font-display text-5xl uppercase">{t("process.h")}</h2>
           <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {[1, 2, 3, 4].map((n) => (
-              <article key={n} className="border border-yellow/25 bg-ink/70 p-5">
-                <span className="text-xs text-yellow">0{n}</span>
+              <article key={n} className="card p-5">
+                <span className="font-display text-xs tracking-[0.16em] text-yellow">
+                  0{n}
+                </span>
                 <h3 className="mt-2 font-display text-2xl uppercase">
                   {t(`process.s${n}t`)}
                 </h3>
@@ -196,33 +184,23 @@ function Home() {
           </div>
         </section>
 
-        <section
-          id="contact"
-          className="border-t border-yellow/25 bg-panel/70 px-5 py-16"
-        >
+        <section id="contact" className="band px-5 py-16">
           <div className="mx-auto max-w-6xl">
             <h2 className="font-display text-5xl uppercase">{t("contact.h")}</h2>
             <p className="mt-3 max-w-xl text-muted">{t("contact.lead")}</p>
             <p className="mt-2 text-sm text-muted">{t("contact.intro")}</p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Link
-                to="/book"
-                className="inline-flex h-12 items-center bg-yellow px-5 text-xs font-bold uppercase tracking-[0.16em] text-ink no-underline hover:bg-yellow-hot"
-              >
+              <Link to="/book" className="btn btn-primary">
                 {t("hero.book")}
               </Link>
-              <Link
-                to="/book"
-                search={{ type: "org" }}
-                className="inline-flex h-12 items-center border-2 border-yellow px-5 text-xs font-bold uppercase tracking-[0.16em] text-yellow no-underline hover:bg-yellow hover:text-ink"
-              >
+              <Link to="/book" search={{ type: "org" }} className="btn btn-outline">
                 {t("contact.org")}
               </Link>
               <a
                 href={SITE.tg}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-12 items-center border-2 border-fg/50 px-5 text-xs font-bold uppercase tracking-[0.16em] text-fg no-underline hover:bg-fg hover:text-ink"
+                className="btn btn-ghost"
               >
                 Telegram
               </a>
@@ -244,7 +222,7 @@ function FlashCard({
   const { t } = useI18n();
   const free = item.status === "available";
   return (
-    <article className="border border-yellow/25 bg-ink/70">
+    <article className="card">
       <div className="relative">
         <img src={item.img} alt={item.title} className="aspect-square w-full object-cover" />
         <span className="absolute left-2 top-2 bg-ink/85 px-2 py-1 text-[0.6rem] uppercase tracking-[0.12em] text-yellow">
