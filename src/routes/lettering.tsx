@@ -189,7 +189,7 @@ function Lettering() {
           <h1 className="font-display text-3xl uppercase sm:text-4xl">
             {t("lettering.h")}
           </h1>
-          <div className="mt-4 border-2 border-yellow bg-ink">
+          <div className="panel mt-4">
             <div className="tape-stripes h-1.5 w-full" aria-hidden />
             <canvas
               ref={canvasRef}
@@ -202,9 +202,9 @@ function Lettering() {
         </section>
 
         <aside className="w-full shrink-0 md:sticky md:top-20 md:w-80">
-          <div className="border border-yellow/30 bg-ink/90 p-4">
+          <div className="card p-4">
             <label className="block">
-              <span className="text-[0.65rem] font-bold uppercase tracking-[0.14em] text-yellow">
+              <span className="field-label">
                 {t("lettering.text")}
               </span>
               <textarea
@@ -212,18 +212,18 @@ function Lettering() {
                 value={text}
                 onChange={(e) => setText(e.target.value)}
                 placeholder={t("lettering.ph")}
-                className="mt-1 w-full border border-yellow/30 bg-panel px-3 py-2 font-display text-lg uppercase text-fg outline-none focus:border-yellow"
+                className="field-input mt-1 h-auto py-2 font-display text-lg uppercase"
               />
             </label>
 
             <label className="mt-4 block">
-              <span className="text-[0.65rem] font-bold uppercase tracking-[0.14em] text-yellow">
+              <span className="field-label">
                 {t("lettering.font")}
               </span>
               <select
                 value={font}
                 onChange={(e) => setFont(e.target.value)}
-                className="mt-1 h-11 w-full border border-yellow/30 bg-panel px-2 text-fg"
+                className="field-input mt-1"
               >
                 {FONTS.map((f) => (
                   <option key={f.id} value={f.id}>
@@ -234,7 +234,7 @@ function Lettering() {
             </label>
 
             <label className="mt-4 block">
-              <span className="text-[0.65rem] font-bold uppercase tracking-[0.14em] text-yellow">
+              <span className="field-label">
                 {t("lettering.size")} {size}
               </span>
               <input
@@ -248,7 +248,7 @@ function Lettering() {
             </label>
 
             <label className="mt-3 block">
-              <span className="text-[0.65rem] font-bold uppercase tracking-[0.14em] text-yellow">
+              <span className="field-label">
                 {t("lettering.track")} {track}
               </span>
               <input
@@ -262,7 +262,7 @@ function Lettering() {
             </label>
 
             <div className="mt-3 flex items-center justify-between">
-              <span className="text-[0.65rem] font-bold uppercase tracking-[0.14em] text-yellow">
+              <span className="field-label">
                 {t("lettering.color")}
               </span>
               <input
@@ -273,7 +273,7 @@ function Lettering() {
               />
             </div>
 
-            <p className="mt-4 text-[0.65rem] font-bold uppercase tracking-[0.14em] text-yellow">
+            <p className="field-label mt-4">
               {t("lettering.bg")}
             </p>
             <div className="mt-2 flex gap-2">
@@ -308,14 +308,14 @@ function Lettering() {
               <button
                 type="button"
                 onClick={() => download("png")}
-                className="h-11 border-2 border-yellow text-xs font-bold uppercase tracking-[0.12em] text-yellow"
+                className="btn btn-outline btn-sm"
               >
                 {t("lettering.png")}
               </button>
               <button
                 type="button"
                 onClick={() => download("stencil")}
-                className="h-11 bg-yellow text-xs font-bold uppercase tracking-[0.12em] text-ink"
+                className="btn btn-primary btn-sm"
               >
                 {t("lettering.stencil")}
               </button>
@@ -324,7 +324,7 @@ function Lettering() {
             <p className="mt-5 text-sm text-muted">{t("lettering.bridge")}</p>
             <Link
               to="/book"
-              className="mt-2 inline-flex h-11 w-full items-center justify-center bg-yellow text-xs font-bold uppercase tracking-[0.14em] text-ink no-underline"
+              className="btn btn-primary btn-sm btn-block mt-2"
             >
               {t("nav.book")}
             </Link>

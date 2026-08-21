@@ -49,7 +49,7 @@ function Designs() {
             {FLASH.map((item) => {
               const free = item.status === "available";
               return (
-                <article key={item.id} className="border border-yellow/25 bg-ink/75">
+                <article key={item.id} className="card">
                   <div className="relative">
                     <img
                       src={item.img}
@@ -90,7 +90,7 @@ function Designs() {
         ) : (
           <div className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-3">
             {WORKS.map((w) => (
-              <article key={w.id} className="border border-yellow/25 bg-ink/75">
+              <article key={w.id} className="card">
                 <img src={w.img} alt={w.title} className="media-image aspect-3/4 w-full object-cover" />
                 <div className="p-3">
                   <p className="text-[0.65rem] uppercase tracking-[0.14em] text-yellow">

@@ -19,7 +19,7 @@ function Labs() {
         <div className="mt-10 grid gap-4 md:grid-cols-2">
           <Link
             to="/lettering"
-            className="flex min-h-52 flex-col justify-between border border-yellow/35 bg-ink/75 p-6 no-underline transition-transform hover:-translate-y-0.5 hover:border-yellow"
+            className="card flex min-h-52 flex-col justify-between p-6 no-underline transition-transform hover:-translate-y-0.5 hover:border-yellow"
           >
             <div>
               <h2 className="font-display text-4xl uppercase text-fg">
@@ -31,7 +31,7 @@ function Labs() {
               {t("labs.open")}
             </span>
           </Link>
-          <div className="flex min-h-52 flex-col justify-between border border-yellow/20 bg-ink/50 p-6 opacity-70">
+          <div className="card flex min-h-52 flex-col justify-between p-6 opacity-70">
             <div>
               <h2 className="font-display text-4xl uppercase text-fg">
                 {t("labs.sketch")}

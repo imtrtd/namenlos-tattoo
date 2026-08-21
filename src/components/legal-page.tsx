@@ -17,7 +17,7 @@ export function LegalPage({ id }: { id: LegalId }) {
   return (
     <SiteShell>
       <main className="mx-auto w-full max-w-2xl flex-1 px-5 py-12">
-        <article className="border border-yellow/30 bg-ink/85 p-6 sm:p-8">
+        <article className="panel p-6 sm:p-8">
           <h1 className="font-display text-4xl uppercase">{page.title}</h1>
           <p className="mt-2 text-xs uppercase tracking-[0.14em] text-muted">
             {t("legal.updated")}
