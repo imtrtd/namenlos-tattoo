@@ -6,9 +6,10 @@ import { cn } from "@/lib/utils";
 import { AuthSlot } from "@/components/auth-slot";
 
 const NAV = [
-  { to: "/", hash: "", key: "nav.site", match: "/" },
-  { to: "/labs", hash: "", key: "nav.labs", match: "/labs" },
-  { to: "/designs", hash: "", key: "nav.designs", match: "/designs" },
+  { to: "/", key: "nav.site", match: "/" },
+  { to: "/designs", key: "nav.designs", match: "/designs" },
+  { to: "/lettering", key: "lettering.h", match: "/lettering" },
+  { to: "/event", key: "nav.events", match: "/event" },
 ] as const;
 
 export function SiteHeader() {
@@ -17,10 +18,10 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-yellow/25 bg-ink/94 backdrop-blur-md">
-      <div className="tape-stripes h-1 w-full" aria-hidden />
+    <header className="sticky top-0 z-50 border-b border-yellow/25 bg-ink/96 backdrop-blur-md">
+      <div className="tape-stripes h-1.5 w-full" aria-hidden />
       <div className="mx-auto grid max-w-6xl grid-cols-[1fr_auto_1fr] items-center gap-2 px-3 py-2 sm:px-5">
-        <nav className="hidden items-center justify-end gap-1 md:flex">
+        <nav className="hidden items-center justify-start gap-1 lg:flex">
           {NAV.map((item) => {
             const on =
               item.match === "/"
@@ -31,8 +32,8 @@ export function SiteHeader() {
                 key={item.to}
                 to={item.to}
                 className={cn(
-                  "px-2 py-2 text-[0.72rem] font-bold uppercase tracking-[0.1em] no-underline transition-colors",
-                  on ? "text-yellow" : "text-fg/80 hover:text-yellow",
+                  "px-2 py-2 text-[0.68rem] font-bold uppercase tracking-[0.12em] no-underline transition-colors",
+                  on ? "text-yellow" : "text-fg/75 hover:text-yellow",
                 )}
                 aria-current={on ? "page" : undefined}
               >
@@ -44,17 +45,14 @@ export function SiteHeader() {
 
         <Link
           to="/"
-          className="group flex flex-col items-start px-3 py-1 no-underline"
+          className="group flex flex-col items-center px-2 py-1 no-underline"
           title="NAMENLOS TATTOO VIKTORIIA"
         >
-          <span className="font-display text-[1.35rem] font-semibold leading-none tracking-[0.18em] text-fg group-hover:text-yellow sm:text-[1.55rem]">
+          <span className="font-display text-[1.28rem] font-semibold leading-none tracking-[0.22em] text-fg group-hover:text-yellow sm:text-[1.5rem]">
             NAMENLOS
           </span>
-          <span className="mt-0.5 font-display text-[0.62rem] font-medium leading-none tracking-[0.42em] text-yellow">
-            TATTOO
-          </span>
-          <span className="mt-1 font-display text-[0.78rem] font-medium leading-none tracking-[0.3em] text-yellow">
-            VIKTORIIA
+          <span className="mt-1 font-display text-[0.58rem] leading-none tracking-[0.28em] text-yellow">
+            TATTOO · VIKTORIIA
           </span>
         </Link>
 
@@ -83,7 +81,7 @@ export function SiteHeader() {
           </Link>
           <button
             type="button"
-            className="grid size-9 place-items-center border border-yellow/50 text-yellow md:hidden"
+            className="grid size-9 place-items-center border border-yellow/50 text-yellow lg:hidden"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-label="Menu"
@@ -94,13 +92,12 @@ export function SiteHeader() {
       </div>
 
       {open ? (
-        <div className="border-t border-yellow/20 bg-ink px-4 py-4 md:hidden">
+        <div className="border-t border-yellow/20 bg-ink px-4 py-4 lg:hidden">
           <div className="flex flex-col gap-1">
             {[
               ...NAV,
-              { to: "/book", hash: "", key: "nav.book", match: "/book" },
-              { to: "/lettering", hash: "", key: "lettering.h", match: "/lettering" },
-              { to: "/event", hash: "", key: "nav.events", match: "/event" },
+              { to: "/book", key: "nav.book", match: "/book" },
+              { to: "/labs", key: "nav.labs", match: "/labs" },
             ].map((item) => (
               <Link
                 key={item.to}
