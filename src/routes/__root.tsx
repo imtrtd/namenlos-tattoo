@@ -7,10 +7,13 @@ import {
 import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import { I18nProvider } from "@/lib/i18n";
+import { SITE } from "@/lib/site";
 import { Toaster } from "sonner";
 import appCss from "../styles.css?url";
 
 const APP_NAME = "NAMENLOS Tattoo";
+const APP_DESC =
+  "NAMENLOS — Viktoriia. Custom tattoo, fine line, lettering, graphic. Nuremberg / Kyiv. Use the pain as fuel.";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -18,14 +21,17 @@ export const Route = createRootRoute({
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: APP_NAME },
-      {
-        name: "description",
-        content:
-          "NAMENLOS — Viktoriia. Custom tattoo, fine line, lettering, graphic. Nuremberg / Kyiv. Use the pain as fuel.",
-      },
+      { name: "description", content: APP_DESC },
       { name: "theme-color", content: "#050505" },
+      { property: "og:title", content: APP_NAME },
+      { property: "og:description", content: APP_DESC },
+      { property: "og:url", content: SITE.url },
+      { property: "og:type", content: "website" },
+      { property: "og:image", content: `${SITE.url}/og.jpg` },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
+      { rel: "canonical", href: SITE.url },
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
       { rel: "stylesheet", href: appCss },
       { rel: "manifest", href: "/__grok/manifest.webmanifest" },

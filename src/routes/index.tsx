@@ -14,10 +14,10 @@ function Home() {
   return (
     <SiteShell>
       <main>
-        <section className="relative mx-auto grid max-w-6xl items-center gap-8 px-5 py-10 sm:py-16 lg:grid-cols-[1.1fr_0.9fr]">
+        <section className="relative mx-auto grid max-w-6xl items-center gap-8 px-5 py-10 sm:py-16 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
             <p className="eyebrow">{t("hero.kicker")}</p>
-            <h1 className="mt-3 font-display text-5xl uppercase leading-[0.9] tracking-wide text-fg sm:text-7xl lg:text-8xl">
+            <h1 className="mt-3 font-display text-5xl uppercase leading-[0.88] tracking-wide text-fg sm:text-7xl lg:text-8xl">
               {t("hero.title1")}
               <br />
               <em className="not-italic text-yellow">{t("hero.title2")}</em>
@@ -29,22 +29,22 @@ function Home() {
               <Link to="/book" className="btn btn-primary">
                 {t("hero.book")}
               </Link>
-              <Link to="/event" className="btn btn-outline">
-                {t("hero.event")}
+              <Link to="/designs" className="btn btn-outline">
+                {t("flash.all")}
               </Link>
             </div>
             <p className="mt-4 text-xs uppercase tracking-[0.16em] text-yellow">
               {t("status.open")}
             </p>
           </div>
-          <div className="relative">
-            <div className="tape-stripes absolute -left-3 top-6 hidden h-[calc(100%-3rem)] w-3 sm:block" />
+          <div className="relative max-w-md justify-self-end lg:max-w-none">
+            <div className="tape-stripes absolute -left-3 top-8 hidden h-[calc(100%-4rem)] w-3 sm:block" />
             <img
               src="/images/author.jpg"
               alt="Viktoriia — NAMENLOS"
-              className="portrait-image w-full border-2 border-yellow/40 object-cover"
+              className="portrait-image w-full object-cover"
             />
-            <p className="mt-2 text-right text-[0.65rem] uppercase tracking-[0.18em] text-muted">
+            <p className="mt-3 text-right text-[0.65rem] uppercase tracking-[0.18em] text-muted">
               {t("about.stamp")}
             </p>
           </div>
@@ -222,8 +222,8 @@ function FlashCard({
   const { t } = useI18n();
   const free = item.status === "available";
   return (
-    <article className="card">
-      <div className="relative">
+    <article className="card group">
+      <div className="relative overflow-hidden">
         <img src={item.img} alt={item.title} className="media-image aspect-square w-full object-cover" />
         <span className="absolute left-2 top-2 bg-ink/85 px-2 py-1 text-[0.6rem] uppercase tracking-[0.12em] text-yellow">
           {t(`status.${item.status}`)}
