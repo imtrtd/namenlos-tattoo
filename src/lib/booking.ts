@@ -19,6 +19,7 @@ const BookingSchema = z.object({
   orgFormat: z.string().trim().max(120).optional().default(""),
   people: z.string().trim().max(40).optional().default(""),
   flashId: z.string().trim().max(40).optional().default(""),
+  sessionFormat: z.string().trim().max(40).optional().default(""),
   lang: z.string().trim().max(8).optional().default("en"),
   hp: z.string().optional().default(""),
 });
@@ -74,6 +75,7 @@ export function buildTelegramText(data: BookingInput): string {
           `Style: ${data.styles || "—"}`,
           `When: ${data.whenLabel || "—"}`,
           `Budget: ${data.budget || "—"}`,
+          `Format: ${data.sessionFormat || "—"}`,
           data.flashId ? `Flash: ${data.flashId}` : "",
           "",
           "Idea:",
