@@ -6,7 +6,7 @@ export const SITE = {
   igHandle: "@namenlos_tattoo",
   tg: "https://t.me/imtryingtodesign",
   tgHandle: "@imtryingtodesign",
-  minPrice: "70€",
+  minPrice: "80€",
 };
 
 export const TG_USER = "imtryingtodesign";
