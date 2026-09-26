@@ -53,6 +53,7 @@ function Book() {
     orgFormat: "",
     people: "",
     city: "",
+    sessionFormat: "",
     terms: false,
     privacy: false,
     health: false,
@@ -95,6 +96,7 @@ function Book() {
       orgFormat: form.orgFormat,
       people: form.people,
       flashId: flash?.id ?? "",
+      sessionFormat: form.sessionFormat,
       lang,
       hp: form.hp,
     };
@@ -231,6 +233,21 @@ function Book() {
 
             {step === 3 ? (
               <div className="space-y-4">
+                {kind === "private" ? (
+                  <label className="block">
+                    <span className="field-label">Session format</span>
+                    <select
+                      value={form.sessionFormat}
+                      onChange={(e) => set("sessionFormat", e.target.value)}
+                      className="field-input"
+                    >
+                      <option value="">—</option>
+                      <option value="studio">Studio</option>
+                      <option value="popup">Pop-up</option>
+                      <option value="guest">Guest spot</option>
+                    </select>
+                  </label>
+                ) : null}
                 <label className="block">
                   <span className="field-label">
                     {t("book.date")}
