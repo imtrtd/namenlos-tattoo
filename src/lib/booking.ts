@@ -36,12 +36,12 @@ export const submitBooking = createServerFn({ method: "POST" })
     await sql`
       insert into bookings (
         kind, name, contact, instagram, email, placement, size, styles, idea,
-        city, when_label, budget, org_name, org_format, people, flash_id, lang
+        city, when_label, budget, org_name, org_format, people, flash_id, session_format, lang
       ) values (
         ${data.kind}, ${data.name}, ${data.contact}, ${data.instagram}, ${data.email},
         ${data.placement}, ${data.size}, ${data.styles}, ${data.idea}, ${data.city},
         ${data.whenLabel}, ${data.budget}, ${data.orgName}, ${data.orgFormat},
-        ${data.people}, ${data.flashId}, ${data.lang}
+        ${data.people}, ${data.flashId}, ${data.sessionFormat}, ${data.lang}
       )
     `;
     return { ok: true as const, skipped: false };

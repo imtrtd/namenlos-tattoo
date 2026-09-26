@@ -45,14 +45,21 @@ export function SiteHeader() {
 
         <Link
           to="/"
-          className="group flex flex-col items-center px-2 py-1 no-underline"
+          className="group flex flex-col items-center border-x border-yellow/20 px-3 py-1.5 no-underline transition-colors hover:border-yellow/60 sm:px-4"
           title="NAMENLOS TATTOO VIKTORIIA"
         >
-          <span className="font-display text-[1.28rem] font-semibold leading-none tracking-[0.22em] text-fg group-hover:text-yellow sm:text-[1.5rem]">
+          <span className="font-display text-[1.18rem] font-semibold leading-none tracking-[0.2em] text-fg transition-colors group-hover:text-yellow sm:text-[1.4rem]">
             NAMENLOS
           </span>
-          <span className="mt-1 font-display text-[0.58rem] leading-none tracking-[0.28em] text-yellow">
-            TATTOO · VIKTORIIA
+          <span className="mt-1 flex items-center gap-1.5 leading-none text-yellow sm:gap-2">
+            <span className="h-px w-3 bg-yellow/60 sm:w-5" aria-hidden />
+            <span className="font-display text-[0.78rem] tracking-[0.2em] sm:text-[0.9rem]">
+              TATTOO
+            </span>
+            <span className="font-sans text-[0.46rem] font-bold tracking-[0.14em] text-fg/65 sm:text-[0.5rem]">
+              VIKTORIIA
+            </span>
+            <span className="h-px w-3 bg-yellow/60 sm:w-5" aria-hidden />
           </span>
         </Link>
 
