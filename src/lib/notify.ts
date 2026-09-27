@@ -30,6 +30,33 @@ async function sendTelegram(text: string): Promise<boolean> {
   return true;
 }
 
+async function sendEmail(text: string): Promise<boolean> {
+  const key = env("RESEND_API_KEY");
+  const to = env("BOOKING_NOTIFY_EMAIL");
+  if (!key || !to) return false;
+
+  const from = env("BOOKING_NOTIFY_FROM") || "NAMENLOS <bookings@namenlos.tattoo>";
+  const res = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      authorization: `Bearer ${key}`,
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      from,
+      to: to.split(",").map((s) => s.trim()).filter(Boolean),
+      subject: "New booking · NAMENLOS",
+      text,
+    }),
+  });
+
+  if (!res.ok) {
+    const body = await res.text().catch(() => "");
+    throw new Error(`resend ${res.status} ${body.slice(0, 240)}`);
+  }
+  return true;
+}
+
 async function sendWebhook(data: BookingInput, text: string): Promise<boolean> {
   const url = env("BOOKING_WEBHOOK_URL");
   if (!url) return false;
@@ -57,8 +84,12 @@ async function sendWebhook(data: BookingInput, text: string): Promise<boolean> {
 /** Fire-and-forget studio alerts. Never throw to the booking form. */
 export async function notifyNewBooking(data: BookingInput): Promise<void> {
   const text = buildTelegramText(data);
-  const jobs = [sendTelegram(text), sendWebhook(data, text)];
+  const jobs = [sendTelegram(text), sendEmail(text), sendWebhook(data, text)];
   const results = await Promise.allSettled(jobs);
+  const sent = results.filter((r) => r.status === "fulfilled" && r.value).length;
+  if (sent === 0) {
+    console.warn("[notify] no channel configured (TELEGRAM_BOT_TOKEN / RESEND_API_KEY / BOOKING_WEBHOOK_URL)");
+  }
   for (const result of results) {
     if (result.status === "rejected") {
       console.error("[notify] failed", result.reason);
