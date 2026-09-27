@@ -80,14 +80,14 @@ function Designs() {
                     <p className="text-[0.65rem] uppercase tracking-[0.14em] text-yellow">
                       {item.style}
                     </p>
-                    <h2 className="font-display text-xl uppercase">{item.title}</h2>
-                    <p className="mt-1 text-xs text-muted">{item.desc[lang as Lang]}</p>
+                    <h2 className="font-display text-xl uppercase leading-none">{item.title}</h2>
+                    <p className="mt-1 text-xs leading-snug text-muted">{item.desc[lang as Lang]}</p>
                     <div className="mt-3">
                       {free ? (
                         <Link
                           to="/book"
                           search={{ design: item.id }}
-                          className="bg-yellow px-3 py-2 text-[0.65rem] font-bold uppercase tracking-[0.1em] text-ink no-underline"
+                          className="inline-block bg-yellow px-3 py-2 text-[0.65rem] font-bold uppercase tracking-[0.1em] text-ink no-underline"
                           onClick={(e) => e.stopPropagation()}
                         >
                           {t("flash.book")}
@@ -126,19 +126,21 @@ function Designs() {
                   height={960}
                   sizes="(min-width: 768px) 30vw, 48vw"
                 />
-                <div className="p-3">
-                  <p className="text-[0.65rem] uppercase tracking-[0.14em] text-yellow">
-                    {w.style} · {w.year}
+                <div className="flex flex-col gap-1 p-3">
+                  <p className="text-[0.62rem] uppercase tracking-[0.14em] text-yellow">
+                    {w.style}
+                    <span className="text-muted"> · {w.year}</span>
                   </p>
-                  <h2 className="font-display text-xl uppercase">{w.title}</h2>
-                  <p className="mt-1 text-xs text-muted">
-                    {w.desc[lang]} · {w.place[lang]} · {w.size}
+                  <h2 className="font-display text-xl uppercase leading-none">{w.title}</h2>
+                  <p className="text-xs leading-snug text-muted">{w.desc[lang]}</p>
+                  <p className="text-[0.62rem] uppercase tracking-[0.12em] text-muted">
+                    {w.place[lang]} · {w.size}
                   </p>
-                  <div className="mt-3 flex gap-3">
+                  <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1">
                     <Link
                       to="/book"
                       search={{ ref: w.title }}
-                      className="text-[0.65rem] font-bold uppercase tracking-[0.12em] text-yellow no-underline"
+                      className="whitespace-nowrap text-[0.65rem] font-bold uppercase tracking-[0.12em] text-yellow no-underline"
                       onClick={(e) => e.stopPropagation()}
                     >
                       {t("works.similar")}
@@ -147,7 +149,7 @@ function Designs() {
                       href={SITE.ig}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[0.65rem] uppercase tracking-[0.12em] text-muted no-underline hover:text-yellow"
+                      className="whitespace-nowrap text-[0.65rem] uppercase tracking-[0.12em] text-muted no-underline hover:text-yellow"
                       onClick={(e) => e.stopPropagation()}
                     >
                       Instagram
