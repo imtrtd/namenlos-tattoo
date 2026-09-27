@@ -1,11 +1,19 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
+import { MediaImg } from "@/components/media-img";
 import { useI18n, type Lang } from "@/lib/i18n";
 import { FLASH, WORKS } from "@/lib/catalog";
 import { SITE } from "@/lib/site";
 import { EVENTS, KINKY_IG, KINKY_WEB, NAMENLOS_IG } from "@/lib/events";
 
-export const Route = createFileRoute("/")({ component: Home });
+export const Route = createFileRoute("/")({
+  component: Home,
+  head: () => ({
+    links: [
+      { rel: "preload", href: "/images/author.jpg", as: "image" },
+    ],
+  }),
+});
 
 function Home() {
   const { t, lang } = useI18n();
@@ -40,10 +48,14 @@ function Home() {
           </div>
           <div className="relative max-w-md justify-self-end lg:max-w-none">
             <div className="tape-stripes absolute -left-3 top-8 hidden h-[calc(100%-4rem)] w-3 sm:block" />
-            <img
+            <MediaImg
               src="/images/author.jpg"
               alt="Viktoriia — NAMENLOS"
               className="portrait-image w-full object-cover"
+              width={720}
+              height={900}
+              sizes="(min-width: 1024px) 480px, 92vw"
+              priority
             />
             <p className="mt-3 text-right text-[0.65rem] uppercase tracking-[0.18em] text-muted">
               {t("about.stamp")}
@@ -64,7 +76,7 @@ function Home() {
           </div>
         </section>
 
-        <section id="about" className="mx-auto grid max-w-6xl gap-8 px-5 py-16 lg:grid-cols-2">
+        <section id="about" className="defer-block mx-auto grid max-w-6xl gap-8 px-5 py-16 lg:grid-cols-2">
           <div>
             <h2 className="font-display text-5xl uppercase tracking-wide">{t("about.h")}</h2>
             <p className="mt-5 text-base leading-relaxed text-muted">{t("about.p1")}</p>
@@ -118,7 +130,7 @@ function Home() {
           </div>
         </section>
 
-        <section id="works" className="mx-auto max-w-6xl px-5 py-6">
+        <section id="works" className="defer-block mx-auto max-w-6xl px-5 py-6">
           <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
             <div>
               <h2 className="font-display text-5xl uppercase">{t("works.h")}</h2>
@@ -134,10 +146,13 @@ function Home() {
           <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
             {previewWorks.map((w) => (
               <article key={w.id} className="card group">
-                <img
+                <MediaImg
                   src={w.img}
                   alt={w.title}
                   className="media-image aspect-3/4 w-full object-cover"
+                  width={720}
+                  height={960}
+                  sizes="(min-width: 768px) 30vw, 48vw"
                 />
                 <div className="p-3">
                   <p className="text-[0.65rem] uppercase tracking-[0.16em] text-yellow">
@@ -150,7 +165,7 @@ function Home() {
           </div>
         </section>
 
-        <section id="styles" className="mx-auto max-w-6xl px-5 py-16">
+        <section id="styles" className="defer-block mx-auto max-w-6xl px-5 py-16">
           <h2 className="font-display text-5xl uppercase">{t("styles.h")}</h2>
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             {[
@@ -171,7 +186,7 @@ function Home() {
           </Link>
         </section>
 
-        <section id="flash" className="mx-auto max-w-6xl px-5 pb-16">
+        <section id="flash" className="defer-block mx-auto max-w-6xl px-5 pb-16">
           <div className="mb-6 flex items-end justify-between">
             <div>
               <h2 className="font-display text-5xl uppercase">{t("flash.h")}</h2>
@@ -250,7 +265,14 @@ function FlashCard({
   return (
     <article className="card group">
       <div className="relative overflow-hidden">
-        <img src={item.img} alt={item.title} className="media-image aspect-square w-full object-cover" />
+        <MediaImg
+          src={item.img}
+          alt={item.title}
+          className="media-image aspect-square w-full object-cover"
+          width={800}
+          height={800}
+          sizes="(min-width: 768px) 30vw, 48vw"
+        />
         <span className="absolute left-2 top-2 bg-ink/85 px-2 py-1 text-[0.6rem] uppercase tracking-[0.12em] text-yellow">
           {t(`status.${item.status}`)}
         </span>
