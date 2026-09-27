@@ -15,7 +15,7 @@ export function AuthSlot() {
     return (
       <Link
         to="/login"
-        className="hidden px-2 py-2 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-muted no-underline hover:text-yellow sm:inline"
+        className="hidden px-2 py-2 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-muted no-underline hover:text-yellow lg:inline"
       >
         {t("nav.signIn")}
       </Link>

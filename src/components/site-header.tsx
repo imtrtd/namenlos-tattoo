@@ -18,10 +18,10 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-yellow/25 bg-ink/96 backdrop-blur-md">
+    <header className="site-header sticky top-0 z-50 border-b border-yellow/25">
       <div className="tape-stripes h-1.5 w-full" aria-hidden />
-      <div className="mx-auto grid max-w-6xl grid-cols-[1fr_auto_1fr] items-center gap-2 px-3 py-2 sm:px-5">
-        <nav className="header-fade hidden items-center justify-start gap-1 lg:flex">
+      <div className="mx-auto flex max-w-6xl items-center gap-2 px-3 py-2 sm:px-5 lg:grid lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]">
+        <nav className="header-fade hidden min-w-0 items-center justify-start gap-1 lg:flex">
           {NAV.map((item) => {
             const on =
               item.match === "/"
@@ -45,23 +45,24 @@ export function SiteHeader() {
 
         <Link
           to="/"
-          className="group flex flex-col items-center px-2 py-1 no-underline"
+          className="group mark-lock flex min-w-0 flex-col items-start no-underline lg:items-center"
           title="NAMENLOS TATTOO VIKTORIIA"
         >
-          <span className="mark-title font-display text-[1.05rem] font-semibold leading-none tracking-[0.16em] text-fg group-hover:text-yellow sm:text-[1.22rem]">
+          <span className="mark-title font-display font-semibold leading-none text-fg group-hover:text-yellow">
             NAMENLOS TATTOO
           </span>
-          <span
-            className="mark-rule mt-1.5 mb-1 block h-px w-full max-w-[11.5rem] bg-yellow/70 sm:max-w-[13.5rem]"
-            aria-hidden
-          />
-          <span className="mark-name font-display text-[0.58rem] leading-none tracking-[0.32em] text-yellow">
+          <span className="mark-rule mt-1.5 mb-1 block h-px w-full bg-yellow/70" aria-hidden />
+          <span className="mark-name font-display leading-none text-yellow">
             VIKTORIIA
           </span>
         </Link>
 
-        <div className="header-fade-late flex items-center justify-end gap-1">
-          <div className="hidden items-center sm:flex" role="group" aria-label="Language">
+        <div className="header-fade-late ml-auto flex shrink-0 items-center justify-end gap-1 lg:ml-0">
+          <div
+            className="hidden items-center md:flex"
+            role="group"
+            aria-label="Language"
+          >
             {LANGS.map((l) => (
               <button
                 key={l.id}
