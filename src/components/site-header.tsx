@@ -48,11 +48,15 @@ export function SiteHeader() {
           className="group flex flex-col items-center px-2 py-1 no-underline"
           title="NAMENLOS TATTOO VIKTORIIA"
         >
-          <span className="font-display text-[1.28rem] font-semibold leading-none tracking-[0.22em] text-fg group-hover:text-yellow sm:text-[1.5rem]">
-            NAMENLOS
+          <span className="font-display text-[1.05rem] font-semibold leading-none tracking-[0.16em] text-fg group-hover:text-yellow sm:text-[1.22rem]">
+            NAMENLOS TATTOO
           </span>
-          <span className="mt-1 font-display text-[0.58rem] leading-none tracking-[0.28em] text-yellow">
-            TATTOO · VIKTORIIA
+          <span
+            className="mt-1.5 mb-1 block h-px w-full max-w-[11.5rem] bg-yellow/70 sm:max-w-[13.5rem]"
+            aria-hidden
+          />
+          <span className="font-display text-[0.58rem] leading-none tracking-[0.32em] text-yellow">
+            VIKTORIIA
           </span>
         </Link>
 
@@ -113,8 +117,7 @@ export function SiteHeader() {
             {LANGS.map((l) => (
               <button
                 key={l.id}
-                type="button"
-                onClick={() => setLang(l.id)}
+                type="button"n                onClick={() => setLang(l.id)}
                 className={cn(
                   "py-2 text-xs font-bold",
                   lang === l.id ? "text-yellow" : "text-muted",
