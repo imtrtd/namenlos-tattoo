@@ -166,8 +166,7 @@
   );
 }
 
-.media-image,
-.portrait-image {
+.media-image {
   filter: grayscale(1) contrast(1.16) brightness(0.92) sepia(0.18) hue-rotate(8deg) saturate(1.2);
   transition: filter 180ms ease, transform 180ms ease;
 }
@@ -180,6 +179,8 @@
 .portrait-image {
   aspect-ratio: 4 / 5;
   object-position: center top;
+  object-fit: cover;
+  filter: contrast(1.06) saturate(1.08);
   border: 2px solid color-mix(in srgb, var(--color-yellow) 70%, transparent);
   box-shadow: 10px 10px 0 #f5c518;
 }
