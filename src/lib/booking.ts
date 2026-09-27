@@ -1,6 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { getSql } from "@/lib/db";
+import { notifyNewBooking } from "@/lib/notify";
 
 const BookingSchema = z
   .object({
@@ -53,6 +54,8 @@ export const submitBooking = createServerFn({ method: "POST" })
     if (data.hp && data.hp.length > 0) {
       return { ok: true as const, skipped: true };
     }
+
+    let skipped = false;
     try {
       const sql = await getSql();
       await sql`
@@ -66,18 +69,25 @@ export const submitBooking = createServerFn({ method: "POST" })
           ${data.people}, ${data.flashId}, ${data.lang}
         )
       `;
-      return { ok: true as const, skipped: false };
     } catch (err) {
       console.error("[booking] database unavailable, continue via Instagram Direct", err);
-      return { ok: true as const, skipped: true };
+      skipped = true;
     }
+
+    try {
+      await notifyNewBooking(data);
+    } catch (err) {
+      console.error("[booking] notify failed", err);
+    }
+
+    return { ok: true as const, skipped };
   });
 
 export function buildTelegramText(data: BookingInput): string {
   const lines =
     data.kind === "org"
       ? [
-          "ORG / COLLAB \u00b7 NAMENLOS",
+          "ORG / COLLAB · NAMENLOS",
           "------------",
           `Company: ${data.orgName || data.name}`,
           `Contact: ${data.contact}`,
@@ -91,7 +101,7 @@ export function buildTelegramText(data: BookingInput): string {
           data.idea || "-",
         ]
       : [
-          "PRIVATE BOOKING \u00b7 NAMENLOS",
+          "PRIVATE BOOKING · NAMENLOS",
           "------------",
           `Name: ${data.name}`,
           `Contact: ${data.contact}`,
