@@ -21,7 +21,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-yellow/25 bg-ink/96 backdrop-blur-md">
       <div className="tape-stripes h-1.5 w-full" aria-hidden />
       <div className="mx-auto grid max-w-6xl grid-cols-[1fr_auto_1fr] items-center gap-2 px-3 py-2 sm:px-5">
-        <nav className="hidden items-center justify-start gap-1 lg:flex">
+        <nav className="header-fade hidden items-center justify-start gap-1 lg:flex">
           {NAV.map((item) => {
             const on =
               item.match === "/"
@@ -48,19 +48,19 @@ export function SiteHeader() {
           className="group flex flex-col items-center px-2 py-1 no-underline"
           title="NAMENLOS TATTOO VIKTORIIA"
         >
-          <span className="font-display text-[1.05rem] font-semibold leading-none tracking-[0.16em] text-fg group-hover:text-yellow sm:text-[1.22rem]">
+          <span className="mark-title font-display text-[1.05rem] font-semibold leading-none tracking-[0.16em] text-fg group-hover:text-yellow sm:text-[1.22rem]">
             NAMENLOS TATTOO
           </span>
           <span
-            className="mt-1.5 mb-1 block h-px w-full max-w-[11.5rem] bg-yellow/70 sm:max-w-[13.5rem]"
+            className="mark-rule mt-1.5 mb-1 block h-px w-full max-w-[11.5rem] bg-yellow/70 sm:max-w-[13.5rem]"
             aria-hidden
           />
-          <span className="font-display text-[0.58rem] leading-none tracking-[0.32em] text-yellow">
+          <span className="mark-name font-display text-[0.58rem] leading-none tracking-[0.32em] text-yellow">
             VIKTORIIA
           </span>
         </Link>
 
-        <div className="flex items-center justify-end gap-1">
+        <div className="header-fade-late flex items-center justify-end gap-1">
           <div className="hidden items-center sm:flex" role="group" aria-label="Language">
             {LANGS.map((l) => (
               <button
