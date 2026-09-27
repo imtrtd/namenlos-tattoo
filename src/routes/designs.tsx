@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
+import { MediaImg } from "@/components/media-img";
 import { useI18n, type Lang } from "@/lib/i18n";
 import { FLASH, WORKS } from "@/lib/catalog";
 import { SITE } from "@/lib/site";
@@ -51,10 +52,13 @@ function Designs() {
               return (
                 <article key={item.id} className="card">
                   <div className="relative">
-                    <img
+                    <MediaImg
                       src={item.img}
                       alt={item.title}
                       className="media-image aspect-square w-full object-cover"
+                      width={800}
+                      height={800}
+                      sizes="(min-width: 768px) 30vw, 48vw"
                     />
                     <span className="absolute left-2 top-2 bg-ink/85 px-2 py-1 text-[0.6rem] uppercase tracking-[0.12em] text-yellow">
                       {t(`status.${item.status}`)}
@@ -91,7 +95,14 @@ function Designs() {
           <div className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-3">
             {WORKS.map((w) => (
               <article key={w.id} className="card">
-                <img src={w.img} alt={w.title} className="media-image aspect-3/4 w-full object-cover" />
+                <MediaImg
+                  src={w.img}
+                  alt={w.title}
+                  className="media-image aspect-3/4 w-full object-cover"
+                  width={720}
+                  height={960}
+                  sizes="(min-width: 768px) 30vw, 48vw"
+                />
                 <div className="p-3">
                   <p className="text-[0.65rem] uppercase tracking-[0.14em] text-yellow">
                     {w.style} · {w.year}
