@@ -5,7 +5,7 @@ import { SiteShell } from "@/components/site-shell";
 import { useI18n } from "@/lib/i18n";
 import { FLASH } from "@/lib/catalog";
 import { submitBooking, buildTelegramText, type BookingInput } from "@/lib/booking";
-import { TG_USER } from "@/lib/site";
+import { SITE } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 type Search = {
@@ -111,9 +111,13 @@ function Book() {
     }
   }
 
-  const tgHref =
-    done &&
-    `https://t.me/${TG_USER}?text=${encodeURIComponent(done)}`;
+  const igHref = done ? SITE.igDm : null;
+
+  function openDirect() {
+    if (done && typeof navigator !== "undefined" && navigator.clipboard) {
+      void navigator.clipboard.writeText(done).catch(() => {});
+    }
+  }
 
   return (
     <SiteShell>
@@ -126,14 +130,15 @@ function Book() {
           </p>
         ) : null}
 
-        {done && tgHref ? (
+        {done && igHref ? (
           <div className="panel mt-8 p-6">
             <h2 className="font-display text-2xl uppercase text-yellow">{t("book.ok")}</h2>
             <a
-              href={tgHref}
+              href={igHref}
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-primary btn-block mt-5"
+              onClick={openDirect}
             >
               {t("book.tg")}
             </a>

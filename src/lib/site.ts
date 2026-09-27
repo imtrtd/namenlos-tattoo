@@ -4,6 +4,7 @@ export const SITE = {
   url: "https://namenlos.tattoo",
   ig: "https://instagram.com/namenlos_tattoo",
   igHandle: "@namenlos_tattoo",
+  igDm: "https://ig.me/m/namenlos_tattoo",
   tg: "https://t.me/namenlostattoo",
   tgHandle: "@namenlostattoo",
   minPrice: "80€",
