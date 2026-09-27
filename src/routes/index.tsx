@@ -3,6 +3,7 @@ import { SiteShell } from "@/components/site-shell";
 import { useI18n, type Lang } from "@/lib/i18n";
 import { FLASH, WORKS } from "@/lib/catalog";
 import { SITE } from "@/lib/site";
+import { EVENTS, KINKY_IG, KINKY_WEB, NAMENLOS_IG } from "@/lib/events";
 
 export const Route = createFileRoute("/")({ component: Home });
 
@@ -69,11 +70,8 @@ function Home() {
             <p className="mt-5 text-base leading-relaxed text-muted">{t("about.p1")}</p>
             <p className="mt-4 text-base leading-relaxed text-muted">{t("about.p2")}</p>
           </div>
-          <Link
-            to="/event"
-            className="event-feature panel relative flex min-h-96 flex-col justify-between overflow-hidden p-6 no-underline"
-          >
-            <div className="relative z-10 max-w-sm">
+          <div className="event-feature panel relative flex min-h-96 flex-col justify-between overflow-hidden p-6">
+            <div className="relative z-10">
               <span className="inline-block bg-yellow px-2 py-1 text-[0.65rem] font-bold uppercase tracking-[0.16em] text-ink">
                 {t("event.kicker")}
               </span>
@@ -81,15 +79,43 @@ function Home() {
                 {t("event.h")}
               </h3>
               <p className="font-display text-xl uppercase text-yellow">{t("event.sub")}</p>
-              <p className="mt-3 text-sm uppercase tracking-[0.14em] text-yellow">
-                {t("event.when")} · {t("event.where")}
-              </p>
+              <ul className="mt-5 space-y-2">
+                {EVENTS.map((ev) => (
+                  <li key={ev.id}>
+                    <a
+                      href={ev.tickets}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block font-display text-lg uppercase tracking-[0.08em] text-fg no-underline hover:text-yellow"
+                    >
+                      {ev.line}
+                    </a>
+                    <p className="text-[0.65rem] uppercase tracking-[0.14em] text-muted">
+                      {ev.venue} · {ev.city}
+                    </p>
+                  </li>
+                ))}
+              </ul>
               <p className="mt-4 text-sm leading-relaxed text-muted">{t("event.lead")}</p>
+              <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-xs font-bold uppercase tracking-[0.14em]">
+                <a href={KINKY_IG} target="_blank" rel="noopener noreferrer" className="text-yellow no-underline">
+                  @kinky_on_tour
+                </a>
+                <a href={NAMENLOS_IG} target="_blank" rel="noopener noreferrer" className="text-yellow no-underline">
+                  @namenlos_tattoo
+                </a>
+                <a href={KINKY_WEB} target="_blank" rel="noopener noreferrer" className="text-fg/80 no-underline hover:text-yellow">
+                  kinky-on.com
+                </a>
+              </div>
             </div>
-            <span className="relative z-10 mt-6 text-xs font-bold uppercase tracking-[0.16em] text-yellow">
+            <Link
+              to="/event"
+              className="relative z-10 mt-6 text-xs font-bold uppercase tracking-[0.16em] text-yellow no-underline"
+            >
               {t("event.more")} →
-            </span>
-          </Link>
+            </Link>
+          </div>
         </section>
 
         <section id="works" className="mx-auto max-w-6xl px-5 py-6">
