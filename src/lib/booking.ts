@@ -53,54 +53,59 @@ export const submitBooking = createServerFn({ method: "POST" })
     if (data.hp && data.hp.length > 0) {
       return { ok: true as const, skipped: true };
     }
-    const sql = await getSql();
-    await sql`
-      insert into bookings (
-        kind, name, contact, instagram, email, placement, size, styles, idea,
-        city, when_label, budget, org_name, org_format, people, flash_id, lang
-      ) values (
-        ${data.kind}, ${data.name}, ${data.contact}, ${data.instagram}, ${data.email},
-        ${data.placement}, ${data.size}, ${data.styles}, ${data.idea}, ${data.city},
-        ${data.whenLabel}, ${data.budget}, ${data.orgName}, ${data.orgFormat},
-        ${data.people}, ${data.flashId}, ${data.lang}
-      )
-    `;
-    return { ok: true as const, skipped: false };
+    try {
+      const sql = await getSql();
+      await sql`
+        insert into bookings (
+          kind, name, contact, instagram, email, placement, size, styles, idea,
+          city, when_label, budget, org_name, org_format, people, flash_id, lang
+        ) values (
+          ${data.kind}, ${data.name}, ${data.contact}, ${data.instagram}, ${data.email},
+          ${data.placement}, ${data.size}, ${data.styles}, ${data.idea}, ${data.city},
+          ${data.whenLabel}, ${data.budget}, ${data.orgName}, ${data.orgFormat},
+          ${data.people}, ${data.flashId}, ${data.lang}
+        )
+      `;
+      return { ok: true as const, skipped: false };
+    } catch (err) {
+      console.error("[booking] database unavailable, continue via Instagram Direct", err);
+      return { ok: true as const, skipped: true };
+    }
   });
 
 export function buildTelegramText(data: BookingInput): string {
   const lines =
     data.kind === "org"
       ? [
-          "🏢 ORG / COLLAB · NAMENLOS",
-          "────────────",
+          "ORG / COLLAB \u00b7 NAMENLOS",
+          "------------",
           `Company: ${data.orgName || data.name}`,
           `Contact: ${data.contact}`,
-          `Format: ${data.orgFormat || "—"}`,
-          `People: ${data.people || "—"}`,
-          `City: ${data.city || "—"}`,
-          `When: ${data.whenLabel || "—"}`,
-          `Budget: ${data.budget || "—"}`,
+          `Format: ${data.orgFormat || "-"}`,
+          `People: ${data.people || "-"}`,
+          `City: ${data.city || "-"}`,
+          `When: ${data.whenLabel || "-"}`,
+          `Budget: ${data.budget || "-"}`,
           "",
           "Brief:",
-          data.idea || "—",
+          data.idea || "-",
         ]
       : [
-          "🖤 PRIVATE BOOKING · NAMENLOS",
-          "────────────",
+          "PRIVATE BOOKING \u00b7 NAMENLOS",
+          "------------",
           `Name: ${data.name}`,
           `Contact: ${data.contact}`,
-          `IG: ${data.instagram || "—"}`,
-          `Place: ${data.placement || "—"}`,
-          `Size: ${data.size || "—"}`,
-          `Style: ${data.styles || "—"}`,
-          `When: ${data.whenLabel || "—"}`,
-          `Budget: ${data.budget || "—"}`,
-          `Format: ${data.sessionFormat || "—"}`,
+          `IG: ${data.instagram || "-"}`,
+          `Place: ${data.placement || "-"}`,
+          `Size: ${data.size || "-"}`,
+          `Style: ${data.styles || "-"}`,
+          `When: ${data.whenLabel || "-"}`,
+          `Budget: ${data.budget || "-"}`,
+          `Format: ${data.sessionFormat || "-"}`,
           data.flashId ? `Flash: ${data.flashId}` : "",
           "",
           "Idea:",
-          data.idea || "—",
+          data.idea || "-",
         ];
   return lines.filter(Boolean).join("\n");
 }
