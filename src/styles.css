@@ -165,14 +165,69 @@
   );
 }
 
+.site-header {
+  background-color: #050505;
+}
+
+@media (min-width: 1024px) {
+  .site-header {
+    background-color: color-mix(in srgb, #050505 96%, transparent);
+    backdrop-filter: blur(12px);
+  }
+}
+
+.mark-lock {
+  max-width: calc(100% - 0.25rem);
+}
+
+.mark-title {
+  white-space: nowrap;
+  font-size: clamp(0.84rem, 3.15vw, 1.22rem);
+  letter-spacing: 0.1em;
+}
+
+.mark-name {
+  white-space: nowrap;
+  font-size: clamp(0.5rem, 1.7vw, 0.58rem);
+  letter-spacing: 0.28em;
+}
+
+@media (min-width: 640px) {
+  .mark-title {
+    letter-spacing: 0.16em;
+  }
+  .mark-name {
+    letter-spacing: 0.32em;
+  }
+}
+
+.media-lazy {
+  opacity: 0.001;
+  transform: translateZ(0);
+  transition: opacity 280ms ease;
+  background-color: #0a0a0a;
+}
+
+.media-lazy.is-ready {
+  opacity: 1;
+}
+
+.defer-block {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 720px;
+}
+
 .media-image {
   filter: grayscale(1) contrast(1.16) brightness(0.92) sepia(0.18) hue-rotate(8deg) saturate(1.2);
   transition: filter 180ms ease, transform 180ms ease;
+  will-change: auto;
 }
 
-.group:hover .media-image {
-  filter: grayscale(0.25) contrast(1.2) brightness(0.96) sepia(0.12) saturate(1.15);
-  transform: scale(1.012);
+@media (hover: hover) and (pointer: fine) {
+  .group:hover .media-image {
+    filter: grayscale(0.25) contrast(1.2) brightness(0.96) sepia(0.12) saturate(1.15);
+    transform: scale(1.012);
+  }
 }
 
 .portrait-image {
@@ -205,8 +260,11 @@
   pointer-events: none;
 }
 
-.wall-veil {
+.site-shell {
   background-color: #050505;
+}
+
+.site-shell.is-walled {
   background-image:
     linear-gradient(rgba(5, 5, 5, 0.5), rgba(5, 5, 5, 0.72)),
     url("/images/wall2.jpg");
@@ -216,7 +274,7 @@
 }
 
 @media (min-width: 901px) {
-  .wall-veil {
+  .site-shell.is-walled {
     background-attachment: fixed;
   }
 }
@@ -233,13 +291,11 @@
 @keyframes mark-rise {
   from {
     opacity: 0;
-    transform: translateY(8px);
-    filter: blur(2px);
+    transform: translate3d(0, 8px, 0);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
