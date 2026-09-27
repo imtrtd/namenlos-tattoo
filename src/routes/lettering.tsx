@@ -4,7 +4,17 @@ import { SiteShell } from "@/components/site-shell";
 import { useI18n } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
-export const Route = createFileRoute("/lettering")({ component: Lettering });
+export const Route = createFileRoute("/lettering")({
+  component: Lettering,
+  head: () => ({
+    links: [
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Special+Elite&family=UnifrakturMaguntia&family=Marck+Script&family=Russo+One&family=Yanone+Kaffeesatz:wght@600;700&family=Metal+Mania&family=Permanent+Marker&display=swap",
+      },
+    ],
+  }),
+});
 
 const FONTS = [
   { id: "Oswald", label: "Oswald" },
