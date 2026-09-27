@@ -69,7 +69,8 @@ function Book() {
   }
 
   async function send() {
-    if (!form.name.trim() || !form.contact.trim()) {
+    const contact = form.contact.trim() || form.instagram.trim();
+    if (!form.name.trim() || !contact) {
       toast.error(t("book.err"));
       return;
     }
@@ -80,9 +81,9 @@ function Book() {
     setSending(true);
     const payload: BookingInput = {
       kind,
-      name: form.name,
-      contact: form.contact,
-      instagram: form.instagram,
+      name: form.name.trim(),
+      contact,
+      instagram: form.instagram.trim(),
       email: "",
       placement: form.placement,
       size: form.size,
@@ -100,13 +101,15 @@ function Book() {
     };
     try {
       await submitBooking({ data: payload });
-      const text = buildTelegramText(payload);
-      setDone(text);
     } catch (e) {
-      const text = buildTelegramText(payload);
-      setDone(text);
-      toast.error(e instanceof Error ? e.message : "Error");
+      const msg = e instanceof Error ? e.message : "";
+      if (msg && !msg.includes("{") && !msg.includes("too_small")) {
+        toast.error(msg);
+      } else {
+        toast.error(t("book.err"));
+      }
     } finally {
+      setDone(buildTelegramText(payload));
       setSending(false);
     }
   }
@@ -202,7 +205,7 @@ function Book() {
                   </button>
                 </div>
                 <Field label={t("book.name")} value={form.name} onChange={(v) => set("name", v)} required />
-                <Field label={t("book.contact")} value={form.contact} onChange={(v) => set("contact", v)} required />
+                <Field label={t("book.contact")} value={form.contact} onChange={(v) => set("contact", v)} />
                 <Field label={t("book.ig")} value={form.instagram} onChange={(v) => set("instagram", v)} />
                 <input
                   className="hidden"
