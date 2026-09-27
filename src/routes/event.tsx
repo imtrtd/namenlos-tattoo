@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site-shell";
 import { useI18n } from "@/lib/i18n";
 import { SITE } from "@/lib/site";
+import { EVENTS, KINKY_IG, KINKY_WEB, NAMENLOS_IG } from "@/lib/events";
 
 export const Route = createFileRoute("/event")({ component: EventPage });
 
@@ -24,17 +25,59 @@ function EventPage() {
             {t("event.h")}
           </h1>
           <p className="mt-3 font-display text-2xl uppercase text-fg sm:text-3xl">{t("event.sub")}</p>
-          <p className="mt-3 text-sm uppercase tracking-[0.14em] text-yellow">
-            {t("event.when")} · {t("event.where")}
-          </p>
           <p className="mt-4 leading-relaxed text-muted">{t("event.page.lead")}</p>
 
+          <ul className="mt-8 space-y-4">
+            {EVENTS.map((ev) => (
+              <li key={ev.id} className="border-t border-yellow/25 pt-4">
+                <p className="font-display text-2xl uppercase tracking-[0.08em] text-fg sm:text-3xl">
+                  {ev.line}
+                </p>
+                <p className="mt-1 text-sm uppercase tracking-[0.14em] text-yellow">
+                  {ev.venue} · {ev.address}
+                </p>
+                <a
+                  href={ev.tickets}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 inline-block text-xs font-bold uppercase tracking-[0.14em] text-yellow no-underline"
+                >
+                  Tickets →
+                </a>
+              </li>
+            ))}
+          </ul>
+
           <div className="mt-8 flex flex-wrap gap-3">
+            <a
+              href={KINKY_IG}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary btn-sm"
+            >
+              @kinky_on_tour
+            </a>
+            <a
+              href={NAMENLOS_IG}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-outline btn-sm"
+            >
+              @namenlos_tattoo
+            </a>
+            <a
+              href={KINKY_WEB}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-ghost btn-sm"
+            >
+              kinky-on.com
+            </a>
             <a
               href={SITE.tg}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-outline btn-sm"
+              className="btn btn-ghost btn-sm"
             >
               Telegram
             </a>
