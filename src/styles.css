@@ -219,15 +219,14 @@
 
 .media-image {
   filter: grayscale(1) contrast(1.16) brightness(0.92) sepia(0.18) hue-rotate(8deg) saturate(1.2);
-  transition: filter 180ms ease, transform 180ms ease;
-  will-change: auto;
+  transition: filter 220ms ease, transform 220ms ease;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .group:hover .media-image {
-    filter: grayscale(0.25) contrast(1.2) brightness(0.96) sepia(0.12) saturate(1.15);
-    transform: scale(1.012);
-  }
+.group:hover .media-image,
+.group:focus-within .media-image,
+.group.is-lit .media-image {
+  filter: grayscale(0) contrast(1.08) brightness(1) saturate(1.12);
+  transform: scale(1.012);
 }
 
 .portrait-image {

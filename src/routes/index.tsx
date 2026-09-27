@@ -281,8 +281,7 @@ function FlashCard({
         <p className="text-[0.65rem] uppercase tracking-[0.14em] text-yellow">{item.style}</p>
         <h3 className="font-display text-lg uppercase">{item.title}</h3>
         <p className="mt-1 line-clamp-2 text-xs text-muted">{item.desc[lang]}</p>
-        <div className="mt-3 flex items-center justify-between">
-          <span className="font-display text-lg text-yellow">{item.price}</span>
+        <div className="mt-3">
           {free ? (
             <Link
               to="/book"

@@ -12,6 +12,7 @@ export const Route = createFileRoute("/designs")({ component: Designs });
 function Designs() {
   const { t, lang } = useI18n();
   const [tab, setTab] = useState<"designs" | "portfolio">("designs");
+  const [lit, setLit] = useState<string | null>(null);
 
   return (
     <SiteShell>
@@ -50,8 +51,19 @@ function Designs() {
             {FLASH.map((item) => {
               const free = item.status === "available";
               return (
-                <article key={item.id} className="card">
-                  <div className="relative">
+                <article
+                  key={item.id}
+                  className={cn("card group", lit === item.id && "is-lit")}
+                  tabIndex={0}
+                  onClick={() => setLit((cur) => (cur === item.id ? null : item.id))}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      setLit((cur) => (cur === item.id ? null : item.id));
+                    }
+                  }}
+                >
+                  <div className="relative overflow-hidden">
                     <MediaImg
                       src={item.img}
                       alt={item.title}
@@ -70,13 +82,13 @@ function Designs() {
                     </p>
                     <h2 className="font-display text-xl uppercase">{item.title}</h2>
                     <p className="mt-1 text-xs text-muted">{item.desc[lang as Lang]}</p>
-                    <div className="mt-3 flex items-center justify-between">
-                      <span className="font-display text-lg text-yellow">{item.price}</span>
+                    <div className="mt-3">
                       {free ? (
                         <Link
                           to="/book"
                           search={{ design: item.id }}
                           className="bg-yellow px-3 py-2 text-[0.65rem] font-bold uppercase tracking-[0.1em] text-ink no-underline"
+                          onClick={(e) => e.stopPropagation()}
                         >
                           {t("flash.book")}
                         </Link>
@@ -94,7 +106,18 @@ function Designs() {
         ) : (
           <div className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-3">
             {WORKS.map((w) => (
-              <article key={w.id} className="card">
+              <article
+                key={w.id}
+                className={cn("card group", lit === w.id && "is-lit")}
+                tabIndex={0}
+                onClick={() => setLit((cur) => (cur === w.id ? null : w.id))}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    setLit((cur) => (cur === w.id ? null : w.id));
+                  }
+                }}
+              >
                 <MediaImg
                   src={w.img}
                   alt={w.title}
@@ -116,6 +139,7 @@ function Designs() {
                       to="/book"
                       search={{ ref: w.title }}
                       className="text-[0.65rem] font-bold uppercase tracking-[0.12em] text-yellow no-underline"
+                      onClick={(e) => e.stopPropagation()}
                     >
                       {t("works.similar")}
                     </Link>
@@ -124,6 +148,7 @@ function Designs() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-[0.65rem] uppercase tracking-[0.12em] text-muted no-underline hover:text-yellow"
+                      onClick={(e) => e.stopPropagation()}
                     >
                       Instagram
                     </a>
