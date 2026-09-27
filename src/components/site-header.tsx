@@ -117,7 +117,8 @@ export function SiteHeader() {
             {LANGS.map((l) => (
               <button
                 key={l.id}
-                type="button"n                onClick={() => setLang(l.id)}
+                type="button"
+                onClick={() => setLang(l.id)}
                 className={cn(
                   "py-2 text-xs font-bold",
                   lang === l.id ? "text-yellow" : "text-muted",
