@@ -22,7 +22,7 @@ export const Route = createRootRoute({
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: APP_NAME },
       { name: "description", content: APP_DESC },
-      { name: "theme-color", content: "#050505" },
+      { name: "theme-color", content: "#000000" },
       { property: "og:title", content: APP_NAME },
       { property: "og:description", content: APP_DESC },
       { property: "og:url", content: SITE.url },
@@ -33,9 +33,10 @@ export const Route = createRootRoute({
     links: [
       { rel: "canonical", href: SITE.url },
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+      { rel: "icon", type: "image/png", sizes: "512x512", href: "/favicon.svg" },
+      { rel: "apple-touch-icon", href: "/favicon.svg" },
       { rel: "stylesheet", href: appCss },
       { rel: "manifest", href: "/__grok/manifest.webmanifest" },
-      { rel: "apple-touch-icon", href: "/__grok/icon-180.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
