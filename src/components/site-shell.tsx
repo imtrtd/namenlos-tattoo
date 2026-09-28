@@ -1,8 +1,11 @@
 import { useEffect, type ReactNode } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { useTelegramWebApp } from "@/lib/telegram-webapp";
 
 export function SiteShell({ children }: { children: ReactNode }) {
+  const { isMini } = useTelegramWebApp();
+
   useEffect(() => {
     const root = document.querySelector(".site-shell");
     if (!root) return;
@@ -17,9 +20,9 @@ export function SiteShell({ children }: { children: ReactNode }) {
 
   return (
     <div className="site-shell flex min-h-dvh flex-col">
-      <SiteHeader />
+      {isMini ? null : <SiteHeader />}
       <div className="flex flex-1 flex-col">{children}</div>
-      <SiteFooter />
+      {isMini ? null : <SiteFooter />}
     </div>
   );
 }
