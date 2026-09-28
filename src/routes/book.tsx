@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { toast } from "sonner";
 import { SiteShell } from "@/components/site-shell";
@@ -7,6 +7,7 @@ import { FLASH } from "@/lib/catalog";
 import { submitBooking, buildTelegramText, type BookingInput } from "@/lib/booking";
 import { SITE } from "@/lib/site";
 import { cn } from "@/lib/utils";
+import { useTelegramWebApp } from "@/lib/telegram-webapp";
 
 type Search = {
   type?: "org" | "private";
@@ -27,6 +28,7 @@ export const Route = createFileRoute("/book")({
 
 function Book() {
   const { t, lang } = useI18n();
+  const { isMini, displayName, handle, close } = useTelegramWebApp();
   const search = Route.useSearch();
   const flash = FLASH.find((d) => d.id === search.design);
   const [step, setStep] = useState(1);
@@ -58,6 +60,15 @@ function Book() {
     health: false,
     hp: "",
   });
+
+  useEffect(() => {
+    if (!displayName && !handle) return;
+    setForm((f) => ({
+      ...f,
+      name: f.name || displayName,
+      contact: f.contact || handle,
+    }));
+  }, [displayName, handle]);
 
   const whenLabel = useMemo(() => {
     if (!form.date) return "";
@@ -145,12 +156,15 @@ function Book() {
             >
               {t("book.tg")}
             </a>
-            <Link
-              to="/"
-              className="btn btn-outline btn-sm btn-block mt-3"
-            >
-              {t("nav.site")}
-            </Link>
+            {isMini ? (
+              <button type="button" className="btn btn-outline btn-sm btn-block mt-3" onClick={close}>
+                Close
+              </button>
+            ) : (
+              <Link to="/" className="btn btn-outline btn-sm btn-block mt-3">
+                {t("nav.site")}
+              </Link>
+            )}
           </div>
         ) : (
           <form
